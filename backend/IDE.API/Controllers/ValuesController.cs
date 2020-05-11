@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 
 namespace IDE.API.Controllers
@@ -10,45 +10,15 @@ namespace IDE.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly ILogger<ValuesController> _logger;
-        
-
-        public ValuesController(ILogger<ValuesController> logger)
+        public ValuesController()
         {
-            _logger = logger;
         }
 
         // GET /values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Get()
         {
-            _logger.LogInformation("****************Values page says hello**************");
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET /values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST /values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT /values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE /values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return $"Hi, there) Current time is {DateTime.Now.ToString()}";
         }
     }
 }
